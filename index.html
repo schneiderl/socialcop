@@ -1,11 +1,19 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html ng-app="socialcop">
+=======
+<html ng-app="leaderboard">
+>>>>>>> 8b5f2af6e5c12ed4d77573e78e2c60ace29d9087
     <head>
         <title>SocialCop Thief Tracking </title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <!-- Bootstrap -->
         <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<<<<<<< HEAD
         <link href="css/socialcop.css" rel="stylesheet" />
+=======
+        <link href="css/leaderboard.css" rel="stylesheet" />
+>>>>>>> 8b5f2af6e5c12ed4d77573e78e2c60ace29d9087
     </head>
     <body>
         <center><h2>SocialCop Thieves Tracking System (STTS)</h2></center>
@@ -33,6 +41,7 @@
                     </tr>
                     </thead>
                     <tbody ng-controller="SubscriptionController">
+<<<<<<< HEAD
                     <tr ng-repeat="thief in main.thiefs">
                         <td>{{thief.lane}}</td>
                         <td>{{thief.name}}</td>
@@ -41,6 +50,16 @@
                               
                                 <input type="checkbox" ng-model="subscribe_thief_checkbox.value"
                                        ng-true-value="'Subscribed'" ng-change="subscribe_thief_notifications(thief.$id,subscribe_thief_checkbox.value)" ng-false-value="'Not Subscribed'">
+=======
+                    <tr ng-repeat="contestant in main.contestants">
+                        <td>{{contestant.lane}}</td>
+                        <td>{{contestant.name}}</td>
+                        <td>{{contestant.score}}</td>
+                        <td> <form name="myForm">
+                              
+                                <input type="checkbox" ng-model="subscribe_thief_checkbox.value"
+                                       ng-true-value="'Subscribed'" ng-change="subscribe_thief_notifications(contestant.$id,subscribe_thief_checkbox.value)" ng-false-value="'Not Subscribed'">
+>>>>>>> 8b5f2af6e5c12ed4d77573e78e2c60ace29d9087
                                </label><br/>
                              </form>
                         </td>
@@ -59,6 +78,10 @@
         <script src="//cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
         <script src="//cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
 
+<<<<<<< HEAD
         <script src="js/socialcop.js"></script>
+=======
+        <script src="js/leader-board.js"></script>
+>>>>>>> 8b5f2af6e5c12ed4d77573e78e2c60ace29d9087
     </body>
 </html>
