@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="socialcop">
+    <head>
+        <title>SocialCop Thief Tracking </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <!-- Bootstrap -->
+        <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="css/socialcop.css" rel="stylesheet" />
+    </head>
+    <body>
+        <center><h2>SocialCop Thieves Tracking System (STTS)</h2></center>
+        <div class="container" ng-controller="MainCtrl as main">
+            <span><h3 style="display: inline;">Let's track them all!</h3>  <a style="float: right;" href="admin.html" target="_blank"><button>Go to admin page to update details</button></a></span>
+            <br>
+            <mark style="display: block;">By default, all thieves' tracking is unsubscribed Click on <b> Checkbox below </b> to receive All notifications.</mark>
+            <br>
+            <form name="myForm" ng-controller="AllNotificationsController">                              
+                                <label> Track everyone -->
+                                <input type="checkbox" ng-model="subscribe_all_checkbox.value"
+                                       ng-true-value="'All'" ng-false-value="'Selected'" ng-change="toggle_notifications_mode()">
+                               </label>
+                              <tt>Subscribed to <b>{{subscribe_all_checkbox.value}}</b> Notifications</tt><br/>
+                             </form>
+                             <br>
+            <div class="well">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Location</th>
+                        <th>Thief's name</th>
+                        <th>Vechicle Number</th>
+                        <th>Track (Receive Updates)</th>
+                    </tr>
+                    </thead>
+                    <tbody ng-controller="SubscriptionController">
+                    <tr ng-repeat="thief in main.thiefs">
+                        <td>{{thief.lane}}</td>
+                        <td>{{thief.name}}</td>
+                        <td>{{thief.score}}</td>
+                        <td> <form name="myForm">
+                              
+                                <input type="checkbox" ng-model="subscribe_thief_checkbox.value"
+                                       ng-true-value="'Subscribed'" ng-change="subscribe_thief_notifications(thief.$id,subscribe_thief_checkbox.value)" ng-false-value="'Not Subscribed'">
+                               </label><br/>
+                             </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <mark><b>Note: If track all checkbox is turned on, you may not be able to see the effect of individual subscriptions.</b></mark>
+        </div>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/sugar/1.4.1/sugar-full.min.js"></script>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+        <script src="//cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+        <script src="//cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+
+        <script src="js/socialcop.js"></script>
+    </body>
+</html>

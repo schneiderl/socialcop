@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="socialcop">
+    <head>
+        <title>Update Thieves' information</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <!-- Bootstrap -->
+        <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" href="css/socialcop.css"/>
+    </head>
+    <body>
+        <div class="container" ng-controller="MainCtrl as main">
+            <h3>Let your fellow cops know about what you've discovered.</h3>
+            <p>Click on the cells to edit them. All the other cops will be notified of the changes according to their notification settings. </p>
+
+            <table class="table edit">
+                <thead>
+                <tr>
+                    <th>Location</th>
+                    <th>Thief's name</th>
+                    <th>Vechicle Number</th>
+                    <th>Caught or Not!</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="thief in main.thiefs">
+                    <td><input type="text" ng-model="thief.lane" ng-blur="main.updateThief(thief)"/></td>
+                    <td><input type="text" ng-model="thief.name" ng-blur="main.updateThief(thief)"/></td>
+                    <td><input type="text" ng-model="thief.score" ng-blur="main.updateThief(thief)"/></td>
+                    <td>
+                        <button type="button" class="btn btn-link" ng-click="main.removeThief(thief)">Gotcha!</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="well">
+                <h4>Add Thief</h4>
+
+                <form class="form-inline" role="form" novalidate ng-submit="main.addThief()">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="main.newThief.lane" placeholder="Enter location">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="main.newThief.name" placeholder="Enter Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="main.newThief.score" placeholder="Enter Vechicle Number">
+                    </div>
+                    <button type="submit" class="btn btn-default">Add</button>
+                </form>
+            </div>
+        </div>
+
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/sugar/1.4.1/sugar-full.min.js"></script>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+        <script src="//cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+        <script src="//cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+
+        <script src="js/socialcop.js"></script>
+    </body>
+</html>
